@@ -1,3 +1,3 @@
-# DnaTest
+# Excel DNA Addin test
 
-Excel-DNA + Google OR-Tools example
+Working Excel-DNA + .NET 6 + Google OR-Tools example.
