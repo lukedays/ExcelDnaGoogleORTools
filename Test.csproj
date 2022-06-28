@@ -1,7 +1,7 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net6.0-windows</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
 	<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
@@ -11,5 +11,9 @@
     <PackageReference Include="ExcelDna.AddIn" Version="1.6.0-preview3" />
     <PackageReference Include="Google.OrTools" Version="9.3.10497" />
   </ItemGroup>
+
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="copy /Y $(TargetDir)\runtimes\win-x64\native\google-ortools-native.dll $(TargetDir)\google-ortools-native.dll" />
+  </Target>
 
 </Project>

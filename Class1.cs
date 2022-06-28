@@ -4,13 +4,13 @@ using Google.OrTools.LinearSolver;
 public static class MyFunctions
 {
     [ExcelFunction(Description = "OR Tools")]
-    public static void TestOrTools()
+    public static double TestOrTools(double x_test)
     {
         // Create the linear solver with the GLOP backend.
         Solver solver = Solver.CreateSolver("GLOP");
 
         // Create the variables x and y.
-        Variable x = solver.MakeNumVar(0.0, 1.0, "x");
+        Variable x = solver.MakeNumVar(0.0, x_test, "x");
         Variable y = solver.MakeNumVar(0.0, 2.0, "y");
 
         Console.WriteLine("Number of variables = " + solver.NumVariables());
@@ -34,5 +34,7 @@ public static class MyFunctions
         Console.WriteLine("Objective value = " + solver.Objective().Value());
         Console.WriteLine("x = " + x.SolutionValue());
         Console.WriteLine("y = " + y.SolutionValue());
+
+        return x.SolutionValue();
     }
 }
